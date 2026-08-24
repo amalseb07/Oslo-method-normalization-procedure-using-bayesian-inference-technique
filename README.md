@@ -61,4 +61,9 @@ These are found in input_data folder as gsf_100Zr_baseline_full.csv, gsf_97Zr.cs
 ## Step 3: Cross-Section and Reaction Rate
 
 1. Add output_data/nld_post.npy and gsf_post.npy to get two files file1.txt and file2.txt in output.dat when you run over the cells.
-2. These are used as input for the TALYS reaction ( As an example, 
+2. These are used as input for the TALYS reaction
+3.  There is a .sh file in cross_section_and_reaction_rate/repeat_reaction_rate.sh that takes in file1.txt and file2.txt and gives reaction_rate.txt. You can use reaction_rate.ipynb in same folder to draw the band of reaction rates.
+4.  There is a .sh file in cross_section_and_reaction_rate/repeat_cross_section.sh that takes in file1.txt and file2.txt and gives cross-section.txt. You can use cross-section.ipynb in same folder to draw the band of cross-sections.
+
+### TADA DONE
+# “I can only leave you with a magic wand, but the real magic happens when you dare to use it—and believe in what you can create.”
