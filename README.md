@@ -36,17 +36,29 @@ These are found in input_data folder as gsf_100Zr_baseline_full.csv, gsf_97Zr.cs
 
 ## Step 1: Constraining the γSF within the Bayesian framework
 
-- In this step we get the set of all  tuned model parameters such that they represent the GSF of 97Zr at high energies while after the transformation preserve the structure of the actual experimental data i.e 100Zr. This is how both normalization and uncertainty quantification is done in a single step. More details on the math behind it can be found at in the paper ......
+- In this step we get the set of all  tuned model parameters such that they represent the GSF of 97Zr at high energies while after the transformation preserve the structure of the actual experimental data i.e 100Zr. This is how both normalization and uncertainty quantification is done in a single step. More details on the math behind it can be found at in the paper (cite~paper)
 
 1. Take the jupyter notebook gsf.ipynb and add both your experimental GSF data ( here gsf_100Zr_baseline_full.csv) and the data to which you want to normalize to ( here gsf_97Zr.csv) in the respective cells
 2. Also add the master_base_gsf.pkl file in the cell respective cell (Pulling the base data of gsf and interpolation to the experimental energy).
 3. Add the necessary changes to the variables as you go.
-4. In the prior definition ( cell -Likelihood and prior definition starts here)  , add the conditions on prior as necessary.
+4. In the prior definition ( cell -Likelihood and prior definition starts here)  , add the conditions on prior as necessary. How the priors must be chosen are explained in the paper ....
 5. In the cell titled " Running the Full MCMC Setup" , you can spectify the initial starting point of the walker, prior mean , prior standard deviation, and also stepsize of each paramter.
 6. The ideal acceptance percentage is around 30-50 but it can vary from problem to problem.
 7. It is important that in the cell titled "Drawing different chains in MCMC" , you see a convergence of the each individual parameter. This is the proof that the MCMC has finally settled on a set of values . If the trend is such that it is increasing or decreasing , it means that it needs to be tuned again ( like stepsize , prior means, prior widths need to be reconsidered)
 8. If everything goes well , run down the cells where you can see the corner plots and also the bands produced as a result of normalization and uncertainty quantification
+
+(Note : There is a cell in between that samples from the posterior distribution and saves in outpit_data/gsf_post.txt. This is used later when the best model parameters for NLD is decided.)
    
+## Step 2: Constraining the NLD within the Bayesian framework
+- For each transformation alpha in the output_data/gsf_post.txt, we find the posterior sampling ctable , ptable of the ldmodel 5.
 
+1. Take the jupyter notebook gsf.ipynb and add both your experimental NLD data ( here 100Z_ld.csv).
+2. Also add the master_base_ld_p.pkl  and master_base_ld_n.pkl file.
+3. This python file takes time to run and if you are on HPCC , you can use use ld.sbatch to submit it as a SLIURM job . Or one could also start a remote screen in a server and start the job in that screen.
+4. The result is a posterior ensemble of ctable, ptable values stored as output_data/nld_post.npy.
+5. One can use drawing_ld.ipynb and output_data/nld_post.npy to get a band of models.
+   
+## Step 3: Cross-Section and Reaction Rate
 
-
+1. Add output_data/nld_post.npy and gsf_post.npy to get two files file1.txt and file2.txt in output.dat when you run over the cells.
+2. These are used as input for the TALYS reaction ( As an example, 
