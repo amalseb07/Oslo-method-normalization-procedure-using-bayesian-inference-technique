@@ -66,4 +66,4 @@ These are found in input_data folder as gsf_100Zr_baseline_full.csv, gsf_97Zr.cs
 4.  There is a .sh file in cross_section_and_reaction_rate/repeat_cross_section.sh that takes in file1.txt and file2.txt and gives cross-section.txt. You can use cross-section.ipynb in same folder to draw the band of cross-sections.
 
 ### TADA DONE
-# “I can only leave you with a magic wand, but the real magic happens when you dare to use it—and believe in what you can create.”
+
