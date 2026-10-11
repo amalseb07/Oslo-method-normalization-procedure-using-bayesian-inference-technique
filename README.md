@@ -34,6 +34,8 @@ These are found in input_data folder as gsf_100Zr_baseline_full.csv, gsf_97Zr.cs
 1. For GSF , I have chosen strength =3 for E1 component and strengthM1 = 1 with talys parameters upbende=0, ubendc =0 and ftable =1. This constitute the base model on which modifications are done to compare with experimental data . It is stored as a master_base_gsf.pkl file in interp_data. This has the same format as the GSF table obtained from output.dat from TALYS2.0. Here, modifications mean tuning the parameters upbende, upbendc and ftable in TALYS2.0.
 2. For NLD , I have ldmodel =5 with ctable , ptable values both set to 0. This constitute the base model on which modifications are done to compare with experimental data . It is stored as a master_base_ld_p.pkl and master_base_ld_n.pkl file in interp_data corresponding to pos. This has the same format as the     NLD table obtained from output.dat from TALYS2.0 .Here modifications mean tuning the parameters ctable and ptable in TALYS2.0.( Note: this .pkl file is combination of many .pkl files with ptable       varied across multiple values. This is because in the actual MCMC steps , we need interpolation of NLD values and to make    interpolation smooth , many values are required.)
 
+You can find how to make these .pkl files in the README in interp_data folder.
+
 ## Step 1: Constraining the γSF within the Bayesian framework
 
 - In this step we get the set of all  tuned model parameters such that they represent the GSF of 97Zr at high energies while after the transformation preserve the structure of the actual experimental data i.e 100Zr. This is how both normalization and uncertainty quantification is done in a single step. More details on the math behind it can be found at in the paper (cite~paper)

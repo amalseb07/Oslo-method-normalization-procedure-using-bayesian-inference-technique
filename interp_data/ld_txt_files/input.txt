@@ -1,0 +1,22 @@
+#basic input
+#
+element Zr
+mass 99
+projectile n
+energy energy.txt
+#
+#model
+#
+ldmodel 5
+#
+strength 3
+strengthM1 1
+#gamgam 40 100 0.065
+ctable 40 100 0
+ptable 40 100 0.25
+#output
+#
+outdensity y
+filedensity y
+outgamma y
+filepsf y
